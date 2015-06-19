@@ -7,6 +7,16 @@
       <div class="panel panel-default">
         <div class="panel-heading">Flac</div>
         <div class="panel-body">
+
+        <div>
+          {{ store._messages.each do |message| }}
+          <p>
+            <strong>{{ message.user.then(&:_name) }}</strong>
+            <span>{{ message._body }}</span>
+          </p>
+          {{ end }}
+        </div>
+
           <form class="form-inline center" e-submit="send_message">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Enter a message" value="{{ page._form._body }}">
@@ -14,16 +24,6 @@
             <input type="submit" class="btn btn-default"/>
           </form>
           <hr/>
-
-
-<div>
-  {{ store._messages.each do |message| }}
-  <p>
-    <strong>{{ message.user.then(&:_name) }}</strong>
-    <span>{{ message._body }}</span>
-  </p>
-  {{ end }}
-</div>
         </div>
       </div>
     </div>
